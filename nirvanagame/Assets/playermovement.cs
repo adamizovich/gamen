@@ -20,5 +20,22 @@ public class playermovement : MonoBehaviour
     void Update()
     {
         horizontal = Input.GetAxisRaw("Horizontal");
+
+        Flip();
+    }
+
+    private void FixedUpdate()
+    {
+        rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
+    }
+
+    private void Flip()
+    { if (facingright && horizontal < 0f || !facingright && horizontal > 0f)
+        {
+            facingright = !facingright;
+            Vector3 localscale = transform.localScale;
+            localscale.x *= -1f;
+            transform.localScale = localscale;
+        }
     }
 }
