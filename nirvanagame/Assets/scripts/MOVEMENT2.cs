@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class MOVEMENT : MonoBehaviour
+public class MOVEMENT1 : MonoBehaviour
 {
 
     public float moveSpeed;
@@ -13,7 +13,6 @@ public class MOVEMENT : MonoBehaviour
     public KeyCode right;
     public KeyCode jump;
     public KeyCode throwBall;
-    public KeyCode throwBall2;
 
     public SpriteRenderer spriteRenderer;
 
@@ -27,17 +26,6 @@ public class MOVEMENT : MonoBehaviour
 
     public GameObject snowBall;
     public Transform throwPoint;
-
-    //new
-    public GameObject snowBall2;
-    public Transform throwPoint2;
-
-    //newer
-    private bool canThrow = true;
-    private float lastThrowTime;
-
-    private bool canThrow2 = true;
-    private float lastThrowTime2;
 
     public float throwForce;
 
@@ -53,41 +41,14 @@ public class MOVEMENT : MonoBehaviour
 
     void Update()
     {
-
-        if (canThrow && Input.GetKeyDown(throwBall))
+        if (Input.GetKeyDown(throwBall))
         {
-            // Check if enough time has passed since the last throw
-            if (Time.time - lastThrowTime >= 2f) // Cooldown time of 2 seconds
-            {
-                GameObject ballClone = Instantiate(snowBall, throwPoint.position, throwPoint.rotation);
-                ballClone.transform.localScale = transform.localScale;
-                anim.SetTrigger("throw");
-                lastThrowTime = Time.time;
-                canThrow = false; // Disable further throws
-                StartCoroutine(EnableThrow());
-            }
-            else
-            {
-                Debug.Log("Cooldown - Wait a bit longer!");
-            }
-        }
-    
 
-    // Coroutine to re-enable throwing after 2 seconds
-     IEnumerator EnableThrow()
-     {
-         yield return new WaitForSeconds(2f);
-        canThrow = true; // Re-enable throwing after cooldown
-     }
-
-
-       if (canThrow2 && Input.GetKeyDown(throwBall2))
-        {
-            if (Time.time - lastThrowTime2 >= 2f)
-            {
-                GameObject.ballClone2 = Instantiate(snowBall2, throwPoint2.position, throwPoint2.rotation);
-                ballClone2.transform
-            }
+            GameObject ballClone = (GameObject)Instantiate(snowBall, throwPoint.position, throwPoint.rotation);
+            //Gör så att projektilen kommer fram på throwpoint när kastknappen är nedtryckt
+            ballClone.transform.localScale = transform.localScale;
+            //Gör så att bollen åker åt det håll man kollar åt
+            anim.SetTrigger("throw");
         }
 
         //Check if on ground
