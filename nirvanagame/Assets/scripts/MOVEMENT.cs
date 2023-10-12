@@ -66,10 +66,6 @@ public class MOVEMENT : MonoBehaviour
                 canThrow = false; // Disable further throws
                 StartCoroutine(EnableThrow());
             }
-            else
-            {
-                Debug.Log("Cooldown - Wait a bit longer!");
-            }
         }
     
 
@@ -81,13 +77,23 @@ public class MOVEMENT : MonoBehaviour
      }
 
 
-       if (canThrow2 && Input.GetKeyDown(throwBall2))
+       if (canThrow && Input.GetKeyDown(throwBall2))
         {
             if (Time.time - lastThrowTime2 >= 2f)
             {
-                GameObject.ballClone2 = Instantiate(snowBall2, throwPoint2.position, throwPoint2.rotation);
-                ballClone2.transform
+                GameObject ballClone2 = Instantiate(snowBall2, throwPoint2.position, throwPoint2.rotation);
+                ballClone2.transform.localScale = transform.localScale;
+                anim.SetTrigger("throw");
+                lastThrowTime2 = Time.time;
+                canThrow = false;
+                StartCoroutine(EnableThrow2());
             }
+        }
+
+        IEnumerator EnableThrow2()
+        {
+            yield return new WaitForSeconds(2f);
+            canThrow = true; // Re-enable throwing after cooldown
         }
 
         //Check if on ground
