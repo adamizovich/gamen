@@ -22,7 +22,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: d40a2cdd49d7ba2478318792232b3b45, type: 2}
+  m_Motion: {fileID: 7400000, guid: d913e0e3fe0785841bd5f53901f2e503, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -50,7 +50,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 61b9b2654c300cf46b4b53c0a3014ee9, type: 2}
+  m_Motion: {fileID: 7400000, guid: 152ecedc43564b4428124b8e756770da, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -65,10 +65,10 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 4
-    m_ConditionEvent: speed
+    m_ConditionEvent: speed2
     m_EventTreshold: 0.01
   - m_ConditionMode: 1
-    m_ConditionEvent: isgrounded
+    m_ConditionEvent: isgrounded2
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -6056408963514393019}
@@ -93,11 +93,8 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: isgrounded
+    m_ConditionEvent: isgrounded2
     m_EventTreshold: 0
-  - m_ConditionMode: 4
-    m_ConditionEvent: speed
-    m_EventTreshold: 0.01
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -8928009354155906012}
   m_Solo: 0
@@ -134,7 +131,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 4777e09d038b6ea44b6ef6112d834a35, type: 2}
+  m_Motion: {fileID: 7400000, guid: 32c4a431adfeb2b45a103707e921c6ed, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -149,7 +146,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: throw
+    m_ConditionEvent: throw2
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 5670152745919309944}
@@ -171,22 +168,22 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: player 1
+  m_Name: player 2
   serializedVersion: 5
   m_AnimatorParameters:
-  - m_Name: speed
+  - m_Name: speed2
     m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
-  - m_Name: isgrounded
+  - m_Name: isgrounded2
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
-  - m_Name: throw
+  - m_Name: throw2
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -214,8 +211,11 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: isgrounded
+    m_ConditionEvent: isgrounded2
     m_EventTreshold: 0
+  - m_ConditionMode: 3
+    m_ConditionEvent: speed2
+    m_EventTreshold: 0.01
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -8928009354155906012}
   m_Solo: 0
@@ -239,10 +239,10 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 4
-    m_ConditionEvent: speed
+    m_ConditionEvent: speed2
     m_EventTreshold: 0.01
   - m_ConditionMode: 1
-    m_ConditionEvent: isgrounded
+    m_ConditionEvent: isgrounded2
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -6056408963514393019}
@@ -311,7 +311,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 2622329a03140ff4499954bc35f914df, type: 2}
+  m_Motion: {fileID: 7400000, guid: 444995de2f02e334fa5a0497f8cc3bcd, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -326,10 +326,10 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 3
-    m_ConditionEvent: speed
+    m_ConditionEvent: speed2
     m_EventTreshold: 0.01
   - m_ConditionMode: 1
-    m_ConditionEvent: isgrounded
+    m_ConditionEvent: isgrounded2
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -412672260066911238}
@@ -340,7 +340,7 @@ AnimatorStateTransition:
   m_TransitionDuration: 0.25
   m_TransitionOffset: 0
   m_ExitTime: 0
-  m_HasExitTime: 1
+  m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
@@ -354,10 +354,10 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 3
-    m_ConditionEvent: speed
+    m_ConditionEvent: speed2
     m_EventTreshold: 0.01
   - m_ConditionMode: 1
-    m_ConditionEvent: isgrounded
+    m_ConditionEvent: isgrounded2
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -412672260066911238}
@@ -382,7 +382,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: isgrounded
+    m_ConditionEvent: isgrounded2
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -6056408963514393019}

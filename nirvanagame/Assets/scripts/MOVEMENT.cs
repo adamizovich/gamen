@@ -9,6 +9,9 @@ public class MOVEMENT : MonoBehaviour
     public float moveSpeed;
     public float jumpForce;
 
+    public AudioSource src;
+    public AudioClip shoot;
+
     public KeyCode left;
     public KeyCode right;
     public KeyCode jump;
@@ -22,7 +25,6 @@ public class MOVEMENT : MonoBehaviour
     public Transform groundCheckPoint;
     public float groundCheckRadius;
     public LayerMask whatIsGround;
-
     public bool isGrounded;
 
     public GameObject snowBall;
@@ -61,6 +63,8 @@ public class MOVEMENT : MonoBehaviour
             {
                 GameObject ballClone = Instantiate(snowBall, throwPoint.position, throwPoint.rotation);
                 ballClone.transform.localScale = transform.localScale;
+                src.clip = shoot;
+                src.Play();
                 anim.SetTrigger("throw");
                 lastThrowTime = Time.time;
                 canThrow = false; // Disable further throws
@@ -83,6 +87,8 @@ public class MOVEMENT : MonoBehaviour
             {
                 GameObject ballClone2 = Instantiate(snowBall2, throwPoint2.position, throwPoint2.rotation);
                 ballClone2.transform.localScale = transform.localScale;
+                src.clip = shoot;
+                src.Play();
                 anim.SetTrigger("throw");
                 lastThrowTime2 = Time.time;
                 canThrow = false;
@@ -124,9 +130,10 @@ public class MOVEMENT : MonoBehaviour
         anim.SetFloat("speed", Mathf.Abs(theRB.velocity.x));
         //Mathf to ignore minus
         anim.SetBool("isgrounded", isGrounded);
+        //decides the animations
 
         // Get the horizontal input
-        float horizontalInput = Input.GetAxis("Horizontal");
+        float horizontalInput = theRB.velocity.x;
 
         // Move the player
         theRB.velocity = new Vector2(horizontalInput * moveSpeed, theRB.velocity.y);

@@ -6,7 +6,7 @@ public class SNOWBALL : MonoBehaviour
 {
     public float ballSpeed;
 
-    private Rigidbody2D theRB;
+    public Rigidbody2D theRB;
 
     public GameObject snowBallEffect;
 
